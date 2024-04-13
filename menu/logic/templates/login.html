@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+    <script src = 'https://code.jquery.com/jquery-3.6.4.min.js'></script>
+    <title>메뉴추천</title>
+</head>
+
+<body>
+  <h1>메뉴 추천하는 사이트</h1>
+
+  <form method = 'post' action = '{{call_back_url}}'>
+    <button type = 'submit' onclick = ''>
+       <img src = '/static/images/kakao_image.png' style = 'padding: 0.05px 0.1px;' alt = '' onclick = '' >
+    </button>
+  </form>
+
+  </br>
+
+  <form id = 'zoneForm' action = '/zone' method = 'get'>
+    <button type = 'button' onclick = 'openZone()'>
+       <img src = '/static/images/map.png' style = 'padding: 0.01px 0.01px;' alt = '' onclick = '' >
+    </button>
+  </form>
+
+  </br>
+
+  <label>위에 버튼 다 누르고 누르셈</label>
+  <form id = 'service' action = '/service' method = 'get'>
+    <button type = 'button' onclick = 'service()'>
+       <img src = '/static/images/send.png' style = 'padding: 0.01px 0.01px;' alt = '' onclick = '' >
+    </button>
+  </form>
+
+  <script>
+    function openZone() {window.location.href = 'https://127.0.0.1:5051/zone';}
+
+    function service() {window.location.href = 'https://127.0.0.1:5051/service';}
+
+    function loadImage() {
+           var input = document.getElementById('fileInput');
+           var image = document.getElementById('image');
+
+           var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {image.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+          }
+  </script>
+</body>
+</html>
+

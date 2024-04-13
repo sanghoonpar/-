@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+   <meta charset = 'utf-8'>
+    <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+    <title>메뉴추천</title>
+</head>
+<body>
+   <label>주변 날씨 판단을 위해</label>
+    <form method = 'post', action = '/zone'>
+       <label for = '위치'>현재위치:</label>
+        <input type = 'text' id = '위치' name = '위치'>
+        <input type = 'submit' value = '전달'>
+        </input>
+    </form>
+    
+    </br>
+    
+    <button type = 'button' onclick = 'openmap()'>
+       지도
+    </button>
+
+    <script>
+       function openmap(){window.location.href = 'https://127.0.0.1:5051/map';}
+    </script>
+</body>
+</html>
