@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+  <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+    <script src = 'https://code.jquery.com/jquery-3.6.4.min.js'></script>
+    <title>메뉴추천</title>
+</head>
+
+<body>
+  <div style = 'width: 290px; height: 76px; left: 14px; top: 20px; position: absolute; color: black; font-size: 64px; font-family: Inter; font-weight: 350; word-wrap: break-word'>메뉴추천</div>
+  <div style = 'width: 350px; height: 44px; left: 14px; top: 120px; position: absolute; color: black; font-size: 36px; font-family: Inter; font-weight: 320; word-wrap: break-word'>메뉴 추천하는 앱</div>
+  <img style = 'width: 138px; height: 140px; left: 275px; top: 20px; position: absolute' src = '/static/images/logo.png' />
+
+  <form method = 'post' action = '{{call_back_url}}'>
+    <button type = 'submit' onclick = ''>
+      <img style = 'width: 154px; height: 84px; left: 11px; top: 200px; position: absolute' src = '/static/images/kakao_image.png' alt = '' onclick = '' >
+    </button>
+  </form>
+
+  <form id = 'zoneForm' action = '/zone' method = 'get'>
+    <button type = 'button' onclick = 'openZone()'>
+      <img style = 'width: 145px; height: 84px; left: 165px; top: 200px; position: absolute' src = '/static/images/map.png' alt = '' onclick = '' >
+    </button>
+  </form>
+
+  <form id = 'service' action = '/service' method = 'get'>
+    <button type = 'button' onclick = 'service()'>
+      <img style = 'width: 154px; height: 84px; left: 300px; top: 200px; position: absolute' src = '/static/images/send.png' alt = '' onclick = '' >
+    </button>
+  </form>
+
+<img style = 'width: 400px; height: 400px; left: 5px; top: 300px; position: absolute' src = '/static/images/menu1.jpg' />
+
+<div class = 'button2'>
+  <form id = 'allergy' action = '/allergy' method = 'get'>
+    <button type = 'button' onclick = 'allergy()' style = 'left: 5px; top: 710px; position: absolute'>
+      알레르기
+    </button>
+  </form>
+
+  <form id = 'dust_weather' action = '/dust_weather' method = 'get'>
+    <button type = 'button' onclick = 'opendust()' style = 'left: 5px; top: 740px; position: absolute'>
+      미세먼지
+    </button>
+  </form>
+</div>
+
+  <script>
+    function openZone() {window.location.href = 'https://127.0.0.1:5051/map';}
+
+    function opendust() {window.location.href = 'https://127.0.0.1:5051/dust_weather';}
+
+    function allergy() {window.location.href = 'https://127.0.0.1:5051/allergy';}
+
+    function service() {window.location.href = 'https://127.0.0.1:5051/service';}
+
+    function loadImage() {
+           var input = document.getElementById('fileInput');
+           var image = document.getElementById('image');
+
+           var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {image.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+  </script>
+</body>
+</html>
+

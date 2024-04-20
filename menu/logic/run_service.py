@@ -2,6 +2,7 @@ from data.menu_choose import menu_choose
 from data.weather import weather
 from data.dust_weather import dust_weather
 from service.kakao_send import send
+from geopy.geocoders import Nominatim
 from service.naver_search import search_res
 import requests
 
@@ -23,3 +24,8 @@ def get_token(code, client_id, redirect_uri):
     print('access_token :', access_token)
     print('refresh_token :', refresh_token) 
     return [access_token, refresh_token]
+def geocoding_reverse(lat_lng_str): 
+    geolocoder = Nominatim(user_agent = 'South Korea', timeout = None)
+    address = geolocoder.reverse(lat_lng_str)
+
+    return address

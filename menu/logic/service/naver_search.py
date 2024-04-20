@@ -26,6 +26,8 @@ def search_res(location, foods_list):
                            headers=nheaders)
         
         result_list = res.json().get('items')
+        print(result_list)
+
         if not result_list:
             print('검색 실패')
         #경우 1,2 처리

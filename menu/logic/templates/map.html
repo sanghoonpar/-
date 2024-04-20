@@ -16,15 +16,13 @@
       height: 100%;
     }
     #map {
-      width: 55%;
-      height: 450px;
+      width: 100%;
+      height: 550px;
     }
   </style>
 </head>
 <body>
-<h1>메뉴 추천하는 사이트</h1>
-<div id='map'></div>
-</br>
+<div id = 'map'></div>
 <form method = 'post', action = '/map'>
   <label for = '좌표'>현재좌표:</label>
   <input type = 'text' id = '좌표' name = '좌표'>
@@ -39,30 +37,26 @@ if (navigator.geolocation) {
         var lat = position.coords.latitude, lon = position.coords.longitude; // 위도경도
         var locPosition = new window.kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성함
         console.log(lat, lon);
-        alert(lat + ',' + lon + ' 이거 입력창에 넣으셈')
+        alert(lat + ', ' + lon + ' 이거 입력창에 넣으셈')
         
         var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
         var mapOption = { 
             center: locPosition, // GeoLocation으로 얻어온 좌표로 지도의 중심을 설정합니다
-            level: 7 // 지도의 확대 레벨 : 7
+            level: 5 // 지도의 확대 레벨 : 5
         }; 
         var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성함
 
         // 폴리곤 생성 및 표시
-        var rectangle = new kakao.maps.Polygon({
-            path: [
-                new kakao.maps.LatLng(lat - 0.015, lon - 0.015),
-                new kakao.maps.LatLng(lat - 0.015, lon + 0.015),
-                new kakao.maps.LatLng(lat + 0.015, lon + 0.015),
-                new kakao.maps.LatLng(lat + 0.015, lon - 0.015)
-            ],
-            strokeWeight: 5,
-            strokeColor: '#FF0000',
+        var circle = new kakao.maps.Circle({
+            center : new kakao.maps.LatLng(lat, lon),  // 원의 중심좌표 입니다 
+            radius: 1500, // 미터 단위의 원의 반지름입니다 
+            strokeWeight: 5, // 선의 두께입니다 
+            strokeColor: '#6B8E23',
             strokeOpacity: 0.8,
-            fillColor: '#FF0000',
+            fillColor: '#6B8E23',
             fillOpacity: 0.5
         }); 
-        rectangle.setMap(map);
+        circle.setMap(map);
     });
 } else {
     var locPosition = new kakao.maps.LatLng(37.566826, 126.9786567);
@@ -78,9 +72,8 @@ function displayMarker(locPosition, message) {
     map.setCenter(locPosition);
 }
 
-function openlogin() {
-    window.location.href = 'https://127.0.0.1:5051/login';
-}
+function openlogin() {window.location.href = 'https://127.0.0.1:5051/main';}
+
 </script>
 </body>
 </html>
